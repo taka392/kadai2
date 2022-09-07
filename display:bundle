@@ -1,0 +1,1377 @@
+
+Book モデルに関するテスト
+  実際に保存してみる
+    有効な投稿内容の場合は保存されるか
+  空白のバリデーションチェック
+    titleが空白の場合にバリデーションチェックされ空白のエラーメッセージが返ってきているか
+    bodyが空白の場合にバリデーションチェックされ空白のエラーメッセージが返ってきているか
+  titleを空白で投稿した場合に画面にエラーメッセージが表示されているか
+    エラーメッセージは正しく表示されるか (FAILED - 1)
+  bodyを空白で投稿した場合に画面にエラーメッセージが表示されているか
+    エラーメッセージは正しく表示されるか (FAILED - 2)
+
+投稿のテスト
+  トップ画面(root_path)のテスト
+    表示の確認
+      トップ画面(root_path)に一覧ページへのリンクが表示されているか (FAILED - 3)
+      root_pathが"/"であるか (FAILED - 4)
+  一覧画面のテスト
+    一覧の表示とリンクの確認
+      bookの一覧表示(tableタグ)と投稿フォームが同一画面に表示されているか (FAILED - 5)
+      bookのタイトルと感想を表示し、詳細・編集・削除のリンクが表示されているか (FAILED - 6)
+      Create Bookボタンが表示される (FAILED - 7)
+    投稿処理に関するテスト
+      投稿に成功しサクセスメッセージが表示されるか (FAILED - 8)
+      投稿に失敗する (FAILED - 9)
+      投稿後のリダイレクト先は正しいか (FAILED - 10)
+    book削除のテスト
+      application.html.erbにjavascript_pack_tagを含んでいるか (FAILED - 11)
+      bookの削除 (FAILED - 12)
+  詳細画面のテスト
+    表示の確認
+      本のタイトルと感想が画面に表示されていること (FAILED - 13)
+      Editリンクが表示される (FAILED - 14)
+      Backリンクが表示される (FAILED - 15)
+    リンクの遷移先の確認
+      Editの遷移先は編集画面か (FAILED - 16)
+      Backの遷移先は一覧画面か (FAILED - 17)
+  編集画面のテスト
+    表示の確認
+      編集前のタイトルと感想がフォームに表示(セット)されている (FAILED - 18)
+      Update Bookボタンが表示される (FAILED - 19)
+      Showリンクが表示される (FAILED - 20)
+      Backリンクが表示される (FAILED - 21)
+    リンクの遷移先の確認
+      Showの遷移先は詳細画面か (FAILED - 22)
+      Backの遷移先は一覧画面か (FAILED - 23)
+    更新処理に関するテスト
+      更新に成功しサクセスメッセージが表示されるか (FAILED - 24)
+      更新に失敗しエラーメッセージが表示されるか (FAILED - 25)
+      更新後のリダイレクト先は正しいか (FAILED - 26)
+
+Failures:
+
+  1) Book モデルに関するテスト titleを空白で投稿した場合に画面にエラーメッセージが表示されているか エラーメッセージは正しく表示されるか
+     Failure/Error: <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+
+     ActionView::Template::Error:
+       Error: property "display" must be followed by a ':'
+               on line 51:5 of stdin
+       >>     display;
+
+          ----^
+     # stdin:51
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sassc-2.4.0/lib/sassc/engine.rb:50:in `render'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sassc-rails-2.1.2/lib/sassc/rails/compressor.rb:29:in `call'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-4.1.1/lib/sprockets/sass_compressor.rb:30:in `call'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-4.1.1/lib/sprockets/processor_utils.rb:84:in `call_processor'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-4.1.1/lib/sprockets/processor_utils.rb:66:in `block in call_processors'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-4.1.1/lib/sprockets/processor_utils.rb:65:in `reverse_each'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-4.1.1/lib/sprockets/processor_utils.rb:65:in `call_processors'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-4.1.1/lib/sprockets/loader.rb:182:in `load_from_unloaded'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-4.1.1/lib/sprockets/loader.rb:59:in `block in load'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-4.1.1/lib/sprockets/loader.rb:337:in `fetch_asset_from_dependency_cache'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-4.1.1/lib/sprockets/loader.rb:43:in `load'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-4.1.1/lib/sprockets/cached_environment.rb:44:in `block in load'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-4.1.1/lib/sprockets/cached_environment.rb:44:in `fetch'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-4.1.1/lib/sprockets/cached_environment.rb:44:in `load'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-4.1.1/lib/sprockets/base.rb:81:in `find_asset'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-4.1.1/lib/sprockets/base.rb:119:in `[]'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-rails-3.4.2/lib/sprockets/rails/helper.rb:358:in `find_asset'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-rails-3.4.2/lib/sprockets/rails/helper.rb:337:in `digest_path'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-rails-3.4.2/lib/sprockets/rails/helper.rb:326:in `asset_path'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-rails-3.4.2/lib/sprockets/rails/helper.rb:103:in `block in resolve_asset_path'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-rails-3.4.2/lib/sprockets/rails/helper.rb:243:in `block in resolve_asset'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-rails-3.4.2/lib/sprockets/rails/helper.rb:242:in `each'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-rails-3.4.2/lib/sprockets/rails/helper.rb:242:in `detect'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-rails-3.4.2/lib/sprockets/rails/helper.rb:242:in `resolve_asset'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-rails-3.4.2/lib/sprockets/rails/helper.rb:102:in `resolve_asset_path'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-rails-3.4.2/lib/sprockets/rails/helper.rb:80:in `compute_asset_path'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-rails-3.4.2/lib/sprockets/rails/helper.rb:186:in `block in stylesheet_link_tag'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-rails-3.4.2/lib/sprockets/rails/helper.rb:184:in `map'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-rails-3.4.2/lib/sprockets/rails/helper.rb:184:in `stylesheet_link_tag'
+     # ./app/views/layouts/application.html.erb:9:in `_app_views_layouts_application_html_erb__2079590097599370159_17940'
+     # <internal:kernel>:90:in `tap'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/actiontext-6.1.6.1/lib/action_text/rendering.rb:20:in `with_renderer'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/actiontext-6.1.6.1/lib/action_text/engine.rb:59:in `block (4 levels) in <class:Engine>'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-2.2.4/lib/rack/tempfile_reaper.rb:15:in `call'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-2.2.4/lib/rack/etag.rb:27:in `call'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-2.2.4/lib/rack/conditional_get.rb:27:in `call'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-2.2.4/lib/rack/head.rb:12:in `call'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-2.2.4/lib/rack/session/abstract/id.rb:266:in `context'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-2.2.4/lib/rack/session/abstract/id.rb:260:in `call'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/railties-6.1.6.1/lib/rails/rack/logger.rb:37:in `call_app'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/railties-6.1.6.1/lib/rails/rack/logger.rb:26:in `block in call'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/railties-6.1.6.1/lib/rails/rack/logger.rb:26:in `call'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-2.2.4/lib/rack/method_override.rb:24:in `call'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-2.2.4/lib/rack/runtime.rb:22:in `call'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-2.2.4/lib/rack/sendfile.rb:110:in `call'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/railties-6.1.6.1/lib/rails/engine.rb:539:in `call'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-2.2.4/lib/rack/urlmap.rb:74:in `block in call'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-2.2.4/lib/rack/urlmap.rb:58:in `each'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-2.2.4/lib/rack/urlmap.rb:58:in `call'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-2.2.4/lib/rack/builder.rb:244:in `call'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-test-2.0.2/lib/rack/test.rb:358:in `process_request'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-test-2.0.2/lib/rack/test.rb:165:in `custom_request'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-test-2.0.2/lib/rack/test.rb:114:in `get'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/capybara-3.37.1/lib/capybara/rack_test/browser.rb:74:in `process'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/capybara-3.37.1/lib/capybara/rack_test/browser.rb:49:in `process_and_follow_redirects'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/capybara-3.37.1/lib/capybara/rack_test/browser.rb:26:in `visit'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/capybara-3.37.1/lib/capybara/rack_test/driver.rb:46:in `visit'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/capybara-3.37.1/lib/capybara/session.rb:278:in `visit'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/capybara-3.37.1/lib/capybara/dsl.rb:52:in `call'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/capybara-3.37.1/lib/capybara/dsl.rb:52:in `visit'
+     # ./spec/models/book_spec.rb:25:in `block (3 levels) in <top (required)>'
+     # ------------------
+     # --- Caused by: ---
+     # SassC::SyntaxError:
+     #   Error: property "display" must be followed by a ':'
+     #           on line 51:5 of stdin
+     #   >>     display;
+     #   
+     #      ----^
+     #   stdin:51
+
+  2) Book モデルに関するテスト bodyを空白で投稿した場合に画面にエラーメッセージが表示されているか エラーメッセージは正しく表示されるか
+     Failure/Error: <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+
+     ActionView::Template::Error:
+       Error: property "display" must be followed by a ':'
+               on line 51:5 of stdin
+       >>     display;
+
+          ----^
+     # stdin:51
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sassc-2.4.0/lib/sassc/engine.rb:50:in `render'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sassc-rails-2.1.2/lib/sassc/rails/compressor.rb:29:in `call'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-4.1.1/lib/sprockets/sass_compressor.rb:30:in `call'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-4.1.1/lib/sprockets/processor_utils.rb:84:in `call_processor'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-4.1.1/lib/sprockets/processor_utils.rb:66:in `block in call_processors'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-4.1.1/lib/sprockets/processor_utils.rb:65:in `reverse_each'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-4.1.1/lib/sprockets/processor_utils.rb:65:in `call_processors'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-4.1.1/lib/sprockets/loader.rb:182:in `load_from_unloaded'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-4.1.1/lib/sprockets/loader.rb:59:in `block in load'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-4.1.1/lib/sprockets/loader.rb:337:in `fetch_asset_from_dependency_cache'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-4.1.1/lib/sprockets/loader.rb:43:in `load'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-4.1.1/lib/sprockets/cached_environment.rb:44:in `block in load'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-4.1.1/lib/sprockets/cached_environment.rb:44:in `fetch'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-4.1.1/lib/sprockets/cached_environment.rb:44:in `load'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-4.1.1/lib/sprockets/base.rb:81:in `find_asset'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-4.1.1/lib/sprockets/base.rb:119:in `[]'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-rails-3.4.2/lib/sprockets/rails/helper.rb:358:in `find_asset'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-rails-3.4.2/lib/sprockets/rails/helper.rb:337:in `digest_path'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-rails-3.4.2/lib/sprockets/rails/helper.rb:326:in `asset_path'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-rails-3.4.2/lib/sprockets/rails/helper.rb:103:in `block in resolve_asset_path'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-rails-3.4.2/lib/sprockets/rails/helper.rb:243:in `block in resolve_asset'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-rails-3.4.2/lib/sprockets/rails/helper.rb:242:in `each'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-rails-3.4.2/lib/sprockets/rails/helper.rb:242:in `detect'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-rails-3.4.2/lib/sprockets/rails/helper.rb:242:in `resolve_asset'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-rails-3.4.2/lib/sprockets/rails/helper.rb:102:in `resolve_asset_path'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-rails-3.4.2/lib/sprockets/rails/helper.rb:80:in `compute_asset_path'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-rails-3.4.2/lib/sprockets/rails/helper.rb:186:in `block in stylesheet_link_tag'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-rails-3.4.2/lib/sprockets/rails/helper.rb:184:in `map'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-rails-3.4.2/lib/sprockets/rails/helper.rb:184:in `stylesheet_link_tag'
+     # ./app/views/layouts/application.html.erb:9:in `_app_views_layouts_application_html_erb__2079590097599370159_17940'
+     # <internal:kernel>:90:in `tap'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/actiontext-6.1.6.1/lib/action_text/rendering.rb:20:in `with_renderer'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/actiontext-6.1.6.1/lib/action_text/engine.rb:59:in `block (4 levels) in <class:Engine>'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-2.2.4/lib/rack/tempfile_reaper.rb:15:in `call'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-2.2.4/lib/rack/etag.rb:27:in `call'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-2.2.4/lib/rack/conditional_get.rb:27:in `call'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-2.2.4/lib/rack/head.rb:12:in `call'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-2.2.4/lib/rack/session/abstract/id.rb:266:in `context'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-2.2.4/lib/rack/session/abstract/id.rb:260:in `call'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/railties-6.1.6.1/lib/rails/rack/logger.rb:37:in `call_app'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/railties-6.1.6.1/lib/rails/rack/logger.rb:26:in `block in call'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/railties-6.1.6.1/lib/rails/rack/logger.rb:26:in `call'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-2.2.4/lib/rack/method_override.rb:24:in `call'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-2.2.4/lib/rack/runtime.rb:22:in `call'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-2.2.4/lib/rack/sendfile.rb:110:in `call'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/railties-6.1.6.1/lib/rails/engine.rb:539:in `call'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-2.2.4/lib/rack/urlmap.rb:74:in `block in call'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-2.2.4/lib/rack/urlmap.rb:58:in `each'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-2.2.4/lib/rack/urlmap.rb:58:in `call'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-2.2.4/lib/rack/builder.rb:244:in `call'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-test-2.0.2/lib/rack/test.rb:358:in `process_request'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-test-2.0.2/lib/rack/test.rb:165:in `custom_request'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-test-2.0.2/lib/rack/test.rb:114:in `get'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/capybara-3.37.1/lib/capybara/rack_test/browser.rb:74:in `process'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/capybara-3.37.1/lib/capybara/rack_test/browser.rb:49:in `process_and_follow_redirects'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/capybara-3.37.1/lib/capybara/rack_test/browser.rb:26:in `visit'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/capybara-3.37.1/lib/capybara/rack_test/driver.rb:46:in `visit'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/capybara-3.37.1/lib/capybara/session.rb:278:in `visit'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/capybara-3.37.1/lib/capybara/dsl.rb:52:in `call'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/capybara-3.37.1/lib/capybara/dsl.rb:52:in `visit'
+     # ./spec/models/book_spec.rb:35:in `block (3 levels) in <top (required)>'
+     # ------------------
+     # --- Caused by: ---
+     # SassC::SyntaxError:
+     #   Error: property "display" must be followed by a ':'
+     #           on line 51:5 of stdin
+     #   >>     display;
+     #   
+     #      ----^
+     #   stdin:51
+
+  3) 投稿のテスト トップ画面(root_path)のテスト 表示の確認 トップ画面(root_path)に一覧ページへのリンクが表示されているか
+     Failure/Error: visit root_path
+
+     NameError:
+       undefined local variable or method `root_path' for #<RSpec::ExampleGroups::Nested::RootPath::Nested "トップ画面(root_path)に一覧ページへのリンクが表示されているか" (./spec/system/books_spec.rb:10)>
+     # ./spec/system/books_spec.rb:7:in `block (3 levels) in <main>'
+
+  4) 投稿のテスト トップ画面(root_path)のテスト 表示の確認 root_pathが"/"であるか
+     Failure/Error: visit root_path
+
+     NameError:
+       undefined local variable or method `root_path' for #<RSpec::ExampleGroups::Nested::RootPath::Nested "root_pathが"/"であるか" (./spec/system/books_spec.rb:13)>
+     # ./spec/system/books_spec.rb:7:in `block (3 levels) in <main>'
+
+  5) 投稿のテスト 一覧画面のテスト 一覧の表示とリンクの確認 bookの一覧表示(tableタグ)と投稿フォームが同一画面に表示されているか
+     Failure/Error: <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+
+     ActionView::Template::Error:
+       Error: property "display" must be followed by a ':'
+               on line 51:5 of stdin
+       >>     display;
+
+          ----^
+     # stdin:51
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sassc-2.4.0/lib/sassc/engine.rb:50:in `render'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sassc-rails-2.1.2/lib/sassc/rails/compressor.rb:29:in `call'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-4.1.1/lib/sprockets/sass_compressor.rb:30:in `call'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-4.1.1/lib/sprockets/processor_utils.rb:84:in `call_processor'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-4.1.1/lib/sprockets/processor_utils.rb:66:in `block in call_processors'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-4.1.1/lib/sprockets/processor_utils.rb:65:in `reverse_each'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-4.1.1/lib/sprockets/processor_utils.rb:65:in `call_processors'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-4.1.1/lib/sprockets/loader.rb:182:in `load_from_unloaded'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-4.1.1/lib/sprockets/loader.rb:59:in `block in load'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-4.1.1/lib/sprockets/loader.rb:337:in `fetch_asset_from_dependency_cache'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-4.1.1/lib/sprockets/loader.rb:43:in `load'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-4.1.1/lib/sprockets/cached_environment.rb:44:in `block in load'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-4.1.1/lib/sprockets/cached_environment.rb:44:in `fetch'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-4.1.1/lib/sprockets/cached_environment.rb:44:in `load'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-4.1.1/lib/sprockets/base.rb:81:in `find_asset'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-4.1.1/lib/sprockets/base.rb:119:in `[]'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-rails-3.4.2/lib/sprockets/rails/helper.rb:358:in `find_asset'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-rails-3.4.2/lib/sprockets/rails/helper.rb:337:in `digest_path'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-rails-3.4.2/lib/sprockets/rails/helper.rb:326:in `asset_path'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-rails-3.4.2/lib/sprockets/rails/helper.rb:103:in `block in resolve_asset_path'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-rails-3.4.2/lib/sprockets/rails/helper.rb:243:in `block in resolve_asset'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-rails-3.4.2/lib/sprockets/rails/helper.rb:242:in `each'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-rails-3.4.2/lib/sprockets/rails/helper.rb:242:in `detect'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-rails-3.4.2/lib/sprockets/rails/helper.rb:242:in `resolve_asset'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-rails-3.4.2/lib/sprockets/rails/helper.rb:102:in `resolve_asset_path'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-rails-3.4.2/lib/sprockets/rails/helper.rb:80:in `compute_asset_path'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-rails-3.4.2/lib/sprockets/rails/helper.rb:186:in `block in stylesheet_link_tag'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-rails-3.4.2/lib/sprockets/rails/helper.rb:184:in `map'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-rails-3.4.2/lib/sprockets/rails/helper.rb:184:in `stylesheet_link_tag'
+     # ./app/views/layouts/application.html.erb:9:in `_app_views_layouts_application_html_erb__2079590097599370159_17940'
+     # <internal:kernel>:90:in `tap'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/actiontext-6.1.6.1/lib/action_text/rendering.rb:20:in `with_renderer'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/actiontext-6.1.6.1/lib/action_text/engine.rb:59:in `block (4 levels) in <class:Engine>'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-2.2.4/lib/rack/tempfile_reaper.rb:15:in `call'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-2.2.4/lib/rack/etag.rb:27:in `call'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-2.2.4/lib/rack/conditional_get.rb:27:in `call'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-2.2.4/lib/rack/head.rb:12:in `call'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-2.2.4/lib/rack/session/abstract/id.rb:266:in `context'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-2.2.4/lib/rack/session/abstract/id.rb:260:in `call'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/railties-6.1.6.1/lib/rails/rack/logger.rb:37:in `call_app'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/railties-6.1.6.1/lib/rails/rack/logger.rb:26:in `block in call'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/railties-6.1.6.1/lib/rails/rack/logger.rb:26:in `call'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-2.2.4/lib/rack/method_override.rb:24:in `call'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-2.2.4/lib/rack/runtime.rb:22:in `call'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-2.2.4/lib/rack/sendfile.rb:110:in `call'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/railties-6.1.6.1/lib/rails/engine.rb:539:in `call'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-2.2.4/lib/rack/urlmap.rb:74:in `block in call'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-2.2.4/lib/rack/urlmap.rb:58:in `each'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-2.2.4/lib/rack/urlmap.rb:58:in `call'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-2.2.4/lib/rack/builder.rb:244:in `call'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-test-2.0.2/lib/rack/test.rb:358:in `process_request'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-test-2.0.2/lib/rack/test.rb:165:in `custom_request'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-test-2.0.2/lib/rack/test.rb:114:in `get'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/capybara-3.37.1/lib/capybara/rack_test/browser.rb:74:in `process'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/capybara-3.37.1/lib/capybara/rack_test/browser.rb:49:in `process_and_follow_redirects'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/capybara-3.37.1/lib/capybara/rack_test/browser.rb:26:in `visit'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/capybara-3.37.1/lib/capybara/rack_test/driver.rb:46:in `visit'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/capybara-3.37.1/lib/capybara/session.rb:278:in `visit'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/capybara-3.37.1/lib/capybara/dsl.rb:52:in `call'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/capybara-3.37.1/lib/capybara/dsl.rb:52:in `visit'
+     # ./spec/system/books_spec.rb:20:in `block (3 levels) in <main>'
+     # ------------------
+     # --- Caused by: ---
+     # SassC::SyntaxError:
+     #   Error: property "display" must be followed by a ':'
+     #           on line 51:5 of stdin
+     #   >>     display;
+     #   
+     #      ----^
+     #   stdin:51
+
+  6) 投稿のテスト 一覧画面のテスト 一覧の表示とリンクの確認 bookのタイトルと感想を表示し、詳細・編集・削除のリンクが表示されているか
+     Failure/Error: <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+
+     ActionView::Template::Error:
+       Error: property "display" must be followed by a ':'
+               on line 51:5 of stdin
+       >>     display;
+
+          ----^
+     # stdin:51
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sassc-2.4.0/lib/sassc/engine.rb:50:in `render'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sassc-rails-2.1.2/lib/sassc/rails/compressor.rb:29:in `call'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-4.1.1/lib/sprockets/sass_compressor.rb:30:in `call'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-4.1.1/lib/sprockets/processor_utils.rb:84:in `call_processor'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-4.1.1/lib/sprockets/processor_utils.rb:66:in `block in call_processors'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-4.1.1/lib/sprockets/processor_utils.rb:65:in `reverse_each'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-4.1.1/lib/sprockets/processor_utils.rb:65:in `call_processors'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-4.1.1/lib/sprockets/loader.rb:182:in `load_from_unloaded'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-4.1.1/lib/sprockets/loader.rb:59:in `block in load'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-4.1.1/lib/sprockets/loader.rb:337:in `fetch_asset_from_dependency_cache'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-4.1.1/lib/sprockets/loader.rb:43:in `load'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-4.1.1/lib/sprockets/cached_environment.rb:44:in `block in load'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-4.1.1/lib/sprockets/cached_environment.rb:44:in `fetch'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-4.1.1/lib/sprockets/cached_environment.rb:44:in `load'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-4.1.1/lib/sprockets/base.rb:81:in `find_asset'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-4.1.1/lib/sprockets/base.rb:119:in `[]'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-rails-3.4.2/lib/sprockets/rails/helper.rb:358:in `find_asset'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-rails-3.4.2/lib/sprockets/rails/helper.rb:337:in `digest_path'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-rails-3.4.2/lib/sprockets/rails/helper.rb:326:in `asset_path'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-rails-3.4.2/lib/sprockets/rails/helper.rb:103:in `block in resolve_asset_path'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-rails-3.4.2/lib/sprockets/rails/helper.rb:243:in `block in resolve_asset'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-rails-3.4.2/lib/sprockets/rails/helper.rb:242:in `each'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-rails-3.4.2/lib/sprockets/rails/helper.rb:242:in `detect'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-rails-3.4.2/lib/sprockets/rails/helper.rb:242:in `resolve_asset'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-rails-3.4.2/lib/sprockets/rails/helper.rb:102:in `resolve_asset_path'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-rails-3.4.2/lib/sprockets/rails/helper.rb:80:in `compute_asset_path'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-rails-3.4.2/lib/sprockets/rails/helper.rb:186:in `block in stylesheet_link_tag'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-rails-3.4.2/lib/sprockets/rails/helper.rb:184:in `map'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-rails-3.4.2/lib/sprockets/rails/helper.rb:184:in `stylesheet_link_tag'
+     # ./app/views/layouts/application.html.erb:9:in `_app_views_layouts_application_html_erb__2079590097599370159_17940'
+     # <internal:kernel>:90:in `tap'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/actiontext-6.1.6.1/lib/action_text/rendering.rb:20:in `with_renderer'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/actiontext-6.1.6.1/lib/action_text/engine.rb:59:in `block (4 levels) in <class:Engine>'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-2.2.4/lib/rack/tempfile_reaper.rb:15:in `call'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-2.2.4/lib/rack/etag.rb:27:in `call'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-2.2.4/lib/rack/conditional_get.rb:27:in `call'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-2.2.4/lib/rack/head.rb:12:in `call'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-2.2.4/lib/rack/session/abstract/id.rb:266:in `context'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-2.2.4/lib/rack/session/abstract/id.rb:260:in `call'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/railties-6.1.6.1/lib/rails/rack/logger.rb:37:in `call_app'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/railties-6.1.6.1/lib/rails/rack/logger.rb:26:in `block in call'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/railties-6.1.6.1/lib/rails/rack/logger.rb:26:in `call'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-2.2.4/lib/rack/method_override.rb:24:in `call'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-2.2.4/lib/rack/runtime.rb:22:in `call'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-2.2.4/lib/rack/sendfile.rb:110:in `call'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/railties-6.1.6.1/lib/rails/engine.rb:539:in `call'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-2.2.4/lib/rack/urlmap.rb:74:in `block in call'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-2.2.4/lib/rack/urlmap.rb:58:in `each'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-2.2.4/lib/rack/urlmap.rb:58:in `call'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-2.2.4/lib/rack/builder.rb:244:in `call'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-test-2.0.2/lib/rack/test.rb:358:in `process_request'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-test-2.0.2/lib/rack/test.rb:165:in `custom_request'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-test-2.0.2/lib/rack/test.rb:114:in `get'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/capybara-3.37.1/lib/capybara/rack_test/browser.rb:74:in `process'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/capybara-3.37.1/lib/capybara/rack_test/browser.rb:49:in `process_and_follow_redirects'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/capybara-3.37.1/lib/capybara/rack_test/browser.rb:26:in `visit'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/capybara-3.37.1/lib/capybara/rack_test/driver.rb:46:in `visit'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/capybara-3.37.1/lib/capybara/session.rb:278:in `visit'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/capybara-3.37.1/lib/capybara/dsl.rb:52:in `call'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/capybara-3.37.1/lib/capybara/dsl.rb:52:in `visit'
+     # ./spec/system/books_spec.rb:20:in `block (3 levels) in <main>'
+     # ------------------
+     # --- Caused by: ---
+     # SassC::SyntaxError:
+     #   Error: property "display" must be followed by a ':'
+     #           on line 51:5 of stdin
+     #   >>     display;
+     #   
+     #      ----^
+     #   stdin:51
+
+  7) 投稿のテスト 一覧画面のテスト 一覧の表示とリンクの確認 Create Bookボタンが表示される
+     Failure/Error: <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+
+     ActionView::Template::Error:
+       Error: property "display" must be followed by a ':'
+               on line 51:5 of stdin
+       >>     display;
+
+          ----^
+     # stdin:51
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sassc-2.4.0/lib/sassc/engine.rb:50:in `render'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sassc-rails-2.1.2/lib/sassc/rails/compressor.rb:29:in `call'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-4.1.1/lib/sprockets/sass_compressor.rb:30:in `call'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-4.1.1/lib/sprockets/processor_utils.rb:84:in `call_processor'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-4.1.1/lib/sprockets/processor_utils.rb:66:in `block in call_processors'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-4.1.1/lib/sprockets/processor_utils.rb:65:in `reverse_each'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-4.1.1/lib/sprockets/processor_utils.rb:65:in `call_processors'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-4.1.1/lib/sprockets/loader.rb:182:in `load_from_unloaded'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-4.1.1/lib/sprockets/loader.rb:59:in `block in load'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-4.1.1/lib/sprockets/loader.rb:337:in `fetch_asset_from_dependency_cache'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-4.1.1/lib/sprockets/loader.rb:43:in `load'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-4.1.1/lib/sprockets/cached_environment.rb:44:in `block in load'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-4.1.1/lib/sprockets/cached_environment.rb:44:in `fetch'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-4.1.1/lib/sprockets/cached_environment.rb:44:in `load'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-4.1.1/lib/sprockets/base.rb:81:in `find_asset'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-4.1.1/lib/sprockets/base.rb:119:in `[]'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-rails-3.4.2/lib/sprockets/rails/helper.rb:358:in `find_asset'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-rails-3.4.2/lib/sprockets/rails/helper.rb:337:in `digest_path'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-rails-3.4.2/lib/sprockets/rails/helper.rb:326:in `asset_path'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-rails-3.4.2/lib/sprockets/rails/helper.rb:103:in `block in resolve_asset_path'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-rails-3.4.2/lib/sprockets/rails/helper.rb:243:in `block in resolve_asset'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-rails-3.4.2/lib/sprockets/rails/helper.rb:242:in `each'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-rails-3.4.2/lib/sprockets/rails/helper.rb:242:in `detect'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-rails-3.4.2/lib/sprockets/rails/helper.rb:242:in `resolve_asset'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-rails-3.4.2/lib/sprockets/rails/helper.rb:102:in `resolve_asset_path'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-rails-3.4.2/lib/sprockets/rails/helper.rb:80:in `compute_asset_path'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-rails-3.4.2/lib/sprockets/rails/helper.rb:186:in `block in stylesheet_link_tag'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-rails-3.4.2/lib/sprockets/rails/helper.rb:184:in `map'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-rails-3.4.2/lib/sprockets/rails/helper.rb:184:in `stylesheet_link_tag'
+     # ./app/views/layouts/application.html.erb:9:in `_app_views_layouts_application_html_erb__2079590097599370159_17940'
+     # <internal:kernel>:90:in `tap'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/actiontext-6.1.6.1/lib/action_text/rendering.rb:20:in `with_renderer'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/actiontext-6.1.6.1/lib/action_text/engine.rb:59:in `block (4 levels) in <class:Engine>'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-2.2.4/lib/rack/tempfile_reaper.rb:15:in `call'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-2.2.4/lib/rack/etag.rb:27:in `call'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-2.2.4/lib/rack/conditional_get.rb:27:in `call'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-2.2.4/lib/rack/head.rb:12:in `call'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-2.2.4/lib/rack/session/abstract/id.rb:266:in `context'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-2.2.4/lib/rack/session/abstract/id.rb:260:in `call'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/railties-6.1.6.1/lib/rails/rack/logger.rb:37:in `call_app'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/railties-6.1.6.1/lib/rails/rack/logger.rb:26:in `block in call'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/railties-6.1.6.1/lib/rails/rack/logger.rb:26:in `call'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-2.2.4/lib/rack/method_override.rb:24:in `call'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-2.2.4/lib/rack/runtime.rb:22:in `call'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-2.2.4/lib/rack/sendfile.rb:110:in `call'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/railties-6.1.6.1/lib/rails/engine.rb:539:in `call'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-2.2.4/lib/rack/urlmap.rb:74:in `block in call'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-2.2.4/lib/rack/urlmap.rb:58:in `each'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-2.2.4/lib/rack/urlmap.rb:58:in `call'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-2.2.4/lib/rack/builder.rb:244:in `call'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-test-2.0.2/lib/rack/test.rb:358:in `process_request'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-test-2.0.2/lib/rack/test.rb:165:in `custom_request'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-test-2.0.2/lib/rack/test.rb:114:in `get'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/capybara-3.37.1/lib/capybara/rack_test/browser.rb:74:in `process'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/capybara-3.37.1/lib/capybara/rack_test/browser.rb:49:in `process_and_follow_redirects'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/capybara-3.37.1/lib/capybara/rack_test/browser.rb:26:in `visit'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/capybara-3.37.1/lib/capybara/rack_test/driver.rb:46:in `visit'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/capybara-3.37.1/lib/capybara/session.rb:278:in `visit'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/capybara-3.37.1/lib/capybara/dsl.rb:52:in `call'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/capybara-3.37.1/lib/capybara/dsl.rb:52:in `visit'
+     # ./spec/system/books_spec.rb:20:in `block (3 levels) in <main>'
+     # ------------------
+     # --- Caused by: ---
+     # SassC::SyntaxError:
+     #   Error: property "display" must be followed by a ':'
+     #           on line 51:5 of stdin
+     #   >>     display;
+     #   
+     #      ----^
+     #   stdin:51
+
+  8) 投稿のテスト 一覧画面のテスト 投稿処理に関するテスト 投稿に成功しサクセスメッセージが表示されるか
+     Failure/Error: <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+
+     ActionView::Template::Error:
+       Error: property "display" must be followed by a ':'
+               on line 51:5 of stdin
+       >>     display;
+
+          ----^
+     # stdin:51
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sassc-2.4.0/lib/sassc/engine.rb:50:in `render'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sassc-rails-2.1.2/lib/sassc/rails/compressor.rb:29:in `call'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-4.1.1/lib/sprockets/sass_compressor.rb:30:in `call'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-4.1.1/lib/sprockets/processor_utils.rb:84:in `call_processor'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-4.1.1/lib/sprockets/processor_utils.rb:66:in `block in call_processors'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-4.1.1/lib/sprockets/processor_utils.rb:65:in `reverse_each'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-4.1.1/lib/sprockets/processor_utils.rb:65:in `call_processors'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-4.1.1/lib/sprockets/loader.rb:182:in `load_from_unloaded'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-4.1.1/lib/sprockets/loader.rb:59:in `block in load'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-4.1.1/lib/sprockets/loader.rb:337:in `fetch_asset_from_dependency_cache'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-4.1.1/lib/sprockets/loader.rb:43:in `load'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-4.1.1/lib/sprockets/cached_environment.rb:44:in `block in load'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-4.1.1/lib/sprockets/cached_environment.rb:44:in `fetch'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-4.1.1/lib/sprockets/cached_environment.rb:44:in `load'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-4.1.1/lib/sprockets/base.rb:81:in `find_asset'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-4.1.1/lib/sprockets/base.rb:119:in `[]'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-rails-3.4.2/lib/sprockets/rails/helper.rb:358:in `find_asset'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-rails-3.4.2/lib/sprockets/rails/helper.rb:337:in `digest_path'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-rails-3.4.2/lib/sprockets/rails/helper.rb:326:in `asset_path'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-rails-3.4.2/lib/sprockets/rails/helper.rb:103:in `block in resolve_asset_path'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-rails-3.4.2/lib/sprockets/rails/helper.rb:243:in `block in resolve_asset'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-rails-3.4.2/lib/sprockets/rails/helper.rb:242:in `each'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-rails-3.4.2/lib/sprockets/rails/helper.rb:242:in `detect'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-rails-3.4.2/lib/sprockets/rails/helper.rb:242:in `resolve_asset'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-rails-3.4.2/lib/sprockets/rails/helper.rb:102:in `resolve_asset_path'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-rails-3.4.2/lib/sprockets/rails/helper.rb:80:in `compute_asset_path'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-rails-3.4.2/lib/sprockets/rails/helper.rb:186:in `block in stylesheet_link_tag'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-rails-3.4.2/lib/sprockets/rails/helper.rb:184:in `map'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-rails-3.4.2/lib/sprockets/rails/helper.rb:184:in `stylesheet_link_tag'
+     # ./app/views/layouts/application.html.erb:9:in `_app_views_layouts_application_html_erb__2079590097599370159_17940'
+     # <internal:kernel>:90:in `tap'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/actiontext-6.1.6.1/lib/action_text/rendering.rb:20:in `with_renderer'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/actiontext-6.1.6.1/lib/action_text/engine.rb:59:in `block (4 levels) in <class:Engine>'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-2.2.4/lib/rack/tempfile_reaper.rb:15:in `call'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-2.2.4/lib/rack/etag.rb:27:in `call'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-2.2.4/lib/rack/conditional_get.rb:27:in `call'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-2.2.4/lib/rack/head.rb:12:in `call'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-2.2.4/lib/rack/session/abstract/id.rb:266:in `context'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-2.2.4/lib/rack/session/abstract/id.rb:260:in `call'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/railties-6.1.6.1/lib/rails/rack/logger.rb:37:in `call_app'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/railties-6.1.6.1/lib/rails/rack/logger.rb:26:in `block in call'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/railties-6.1.6.1/lib/rails/rack/logger.rb:26:in `call'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-2.2.4/lib/rack/method_override.rb:24:in `call'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-2.2.4/lib/rack/runtime.rb:22:in `call'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-2.2.4/lib/rack/sendfile.rb:110:in `call'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/railties-6.1.6.1/lib/rails/engine.rb:539:in `call'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-2.2.4/lib/rack/urlmap.rb:74:in `block in call'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-2.2.4/lib/rack/urlmap.rb:58:in `each'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-2.2.4/lib/rack/urlmap.rb:58:in `call'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-2.2.4/lib/rack/builder.rb:244:in `call'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-test-2.0.2/lib/rack/test.rb:358:in `process_request'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-test-2.0.2/lib/rack/test.rb:165:in `custom_request'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-test-2.0.2/lib/rack/test.rb:114:in `get'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/capybara-3.37.1/lib/capybara/rack_test/browser.rb:74:in `process'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/capybara-3.37.1/lib/capybara/rack_test/browser.rb:49:in `process_and_follow_redirects'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/capybara-3.37.1/lib/capybara/rack_test/browser.rb:26:in `visit'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/capybara-3.37.1/lib/capybara/rack_test/driver.rb:46:in `visit'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/capybara-3.37.1/lib/capybara/session.rb:278:in `visit'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/capybara-3.37.1/lib/capybara/dsl.rb:52:in `call'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/capybara-3.37.1/lib/capybara/dsl.rb:52:in `visit'
+     # ./spec/system/books_spec.rb:20:in `block (3 levels) in <main>'
+     # ------------------
+     # --- Caused by: ---
+     # SassC::SyntaxError:
+     #   Error: property "display" must be followed by a ':'
+     #           on line 51:5 of stdin
+     #   >>     display;
+     #   
+     #      ----^
+     #   stdin:51
+
+  9) 投稿のテスト 一覧画面のテスト 投稿処理に関するテスト 投稿に失敗する
+     Failure/Error: <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+
+     ActionView::Template::Error:
+       Error: property "display" must be followed by a ':'
+               on line 51:5 of stdin
+       >>     display;
+
+          ----^
+     # stdin:51
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sassc-2.4.0/lib/sassc/engine.rb:50:in `render'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sassc-rails-2.1.2/lib/sassc/rails/compressor.rb:29:in `call'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-4.1.1/lib/sprockets/sass_compressor.rb:30:in `call'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-4.1.1/lib/sprockets/processor_utils.rb:84:in `call_processor'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-4.1.1/lib/sprockets/processor_utils.rb:66:in `block in call_processors'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-4.1.1/lib/sprockets/processor_utils.rb:65:in `reverse_each'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-4.1.1/lib/sprockets/processor_utils.rb:65:in `call_processors'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-4.1.1/lib/sprockets/loader.rb:182:in `load_from_unloaded'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-4.1.1/lib/sprockets/loader.rb:59:in `block in load'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-4.1.1/lib/sprockets/loader.rb:337:in `fetch_asset_from_dependency_cache'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-4.1.1/lib/sprockets/loader.rb:43:in `load'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-4.1.1/lib/sprockets/cached_environment.rb:44:in `block in load'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-4.1.1/lib/sprockets/cached_environment.rb:44:in `fetch'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-4.1.1/lib/sprockets/cached_environment.rb:44:in `load'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-4.1.1/lib/sprockets/base.rb:81:in `find_asset'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-4.1.1/lib/sprockets/base.rb:119:in `[]'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-rails-3.4.2/lib/sprockets/rails/helper.rb:358:in `find_asset'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-rails-3.4.2/lib/sprockets/rails/helper.rb:337:in `digest_path'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-rails-3.4.2/lib/sprockets/rails/helper.rb:326:in `asset_path'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-rails-3.4.2/lib/sprockets/rails/helper.rb:103:in `block in resolve_asset_path'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-rails-3.4.2/lib/sprockets/rails/helper.rb:243:in `block in resolve_asset'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-rails-3.4.2/lib/sprockets/rails/helper.rb:242:in `each'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-rails-3.4.2/lib/sprockets/rails/helper.rb:242:in `detect'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-rails-3.4.2/lib/sprockets/rails/helper.rb:242:in `resolve_asset'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-rails-3.4.2/lib/sprockets/rails/helper.rb:102:in `resolve_asset_path'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-rails-3.4.2/lib/sprockets/rails/helper.rb:80:in `compute_asset_path'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-rails-3.4.2/lib/sprockets/rails/helper.rb:186:in `block in stylesheet_link_tag'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-rails-3.4.2/lib/sprockets/rails/helper.rb:184:in `map'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-rails-3.4.2/lib/sprockets/rails/helper.rb:184:in `stylesheet_link_tag'
+     # ./app/views/layouts/application.html.erb:9:in `_app_views_layouts_application_html_erb__2079590097599370159_17940'
+     # <internal:kernel>:90:in `tap'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/actiontext-6.1.6.1/lib/action_text/rendering.rb:20:in `with_renderer'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/actiontext-6.1.6.1/lib/action_text/engine.rb:59:in `block (4 levels) in <class:Engine>'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-2.2.4/lib/rack/tempfile_reaper.rb:15:in `call'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-2.2.4/lib/rack/etag.rb:27:in `call'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-2.2.4/lib/rack/conditional_get.rb:27:in `call'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-2.2.4/lib/rack/head.rb:12:in `call'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-2.2.4/lib/rack/session/abstract/id.rb:266:in `context'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-2.2.4/lib/rack/session/abstract/id.rb:260:in `call'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/railties-6.1.6.1/lib/rails/rack/logger.rb:37:in `call_app'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/railties-6.1.6.1/lib/rails/rack/logger.rb:26:in `block in call'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/railties-6.1.6.1/lib/rails/rack/logger.rb:26:in `call'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-2.2.4/lib/rack/method_override.rb:24:in `call'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-2.2.4/lib/rack/runtime.rb:22:in `call'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-2.2.4/lib/rack/sendfile.rb:110:in `call'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/railties-6.1.6.1/lib/rails/engine.rb:539:in `call'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-2.2.4/lib/rack/urlmap.rb:74:in `block in call'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-2.2.4/lib/rack/urlmap.rb:58:in `each'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-2.2.4/lib/rack/urlmap.rb:58:in `call'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-2.2.4/lib/rack/builder.rb:244:in `call'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-test-2.0.2/lib/rack/test.rb:358:in `process_request'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-test-2.0.2/lib/rack/test.rb:165:in `custom_request'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-test-2.0.2/lib/rack/test.rb:114:in `get'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/capybara-3.37.1/lib/capybara/rack_test/browser.rb:74:in `process'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/capybara-3.37.1/lib/capybara/rack_test/browser.rb:49:in `process_and_follow_redirects'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/capybara-3.37.1/lib/capybara/rack_test/browser.rb:26:in `visit'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/capybara-3.37.1/lib/capybara/rack_test/driver.rb:46:in `visit'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/capybara-3.37.1/lib/capybara/session.rb:278:in `visit'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/capybara-3.37.1/lib/capybara/dsl.rb:52:in `call'
+     # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/capybara-3.37.1/lib/capybara/dsl.rb:52:in `visit'
+     # ./spec/system/books_spec.rb:20:in `block (3 levels) in <main>'
+     # ------------------
+     # --- Caused by: ---
+     # SassC::SyntaxError:
+     #   Error: property "display" must be followed by a ':'
+     #           on line 51:5 of stdin
+     #   >>     display;
+     #   
+     #      ----^
+     #   stdin:51
+
+  10) 投稿のテスト 一覧画面のテスト 投稿処理に関するテスト 投稿後のリダイレクト先は正しいか
+      Failure/Error: <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+
+      ActionView::Template::Error:
+        Error: property "display" must be followed by a ':'
+                on line 51:5 of stdin
+        >>     display;
+
+           ----^
+      # stdin:51
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sassc-2.4.0/lib/sassc/engine.rb:50:in `render'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sassc-rails-2.1.2/lib/sassc/rails/compressor.rb:29:in `call'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-4.1.1/lib/sprockets/sass_compressor.rb:30:in `call'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-4.1.1/lib/sprockets/processor_utils.rb:84:in `call_processor'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-4.1.1/lib/sprockets/processor_utils.rb:66:in `block in call_processors'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-4.1.1/lib/sprockets/processor_utils.rb:65:in `reverse_each'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-4.1.1/lib/sprockets/processor_utils.rb:65:in `call_processors'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-4.1.1/lib/sprockets/loader.rb:182:in `load_from_unloaded'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-4.1.1/lib/sprockets/loader.rb:59:in `block in load'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-4.1.1/lib/sprockets/loader.rb:337:in `fetch_asset_from_dependency_cache'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-4.1.1/lib/sprockets/loader.rb:43:in `load'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-4.1.1/lib/sprockets/cached_environment.rb:44:in `block in load'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-4.1.1/lib/sprockets/cached_environment.rb:44:in `fetch'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-4.1.1/lib/sprockets/cached_environment.rb:44:in `load'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-4.1.1/lib/sprockets/base.rb:81:in `find_asset'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-4.1.1/lib/sprockets/base.rb:119:in `[]'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-rails-3.4.2/lib/sprockets/rails/helper.rb:358:in `find_asset'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-rails-3.4.2/lib/sprockets/rails/helper.rb:337:in `digest_path'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-rails-3.4.2/lib/sprockets/rails/helper.rb:326:in `asset_path'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-rails-3.4.2/lib/sprockets/rails/helper.rb:103:in `block in resolve_asset_path'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-rails-3.4.2/lib/sprockets/rails/helper.rb:243:in `block in resolve_asset'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-rails-3.4.2/lib/sprockets/rails/helper.rb:242:in `each'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-rails-3.4.2/lib/sprockets/rails/helper.rb:242:in `detect'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-rails-3.4.2/lib/sprockets/rails/helper.rb:242:in `resolve_asset'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-rails-3.4.2/lib/sprockets/rails/helper.rb:102:in `resolve_asset_path'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-rails-3.4.2/lib/sprockets/rails/helper.rb:80:in `compute_asset_path'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-rails-3.4.2/lib/sprockets/rails/helper.rb:186:in `block in stylesheet_link_tag'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-rails-3.4.2/lib/sprockets/rails/helper.rb:184:in `map'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-rails-3.4.2/lib/sprockets/rails/helper.rb:184:in `stylesheet_link_tag'
+      # ./app/views/layouts/application.html.erb:9:in `_app_views_layouts_application_html_erb__2079590097599370159_17940'
+      # <internal:kernel>:90:in `tap'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/actiontext-6.1.6.1/lib/action_text/rendering.rb:20:in `with_renderer'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/actiontext-6.1.6.1/lib/action_text/engine.rb:59:in `block (4 levels) in <class:Engine>'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-2.2.4/lib/rack/tempfile_reaper.rb:15:in `call'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-2.2.4/lib/rack/etag.rb:27:in `call'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-2.2.4/lib/rack/conditional_get.rb:27:in `call'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-2.2.4/lib/rack/head.rb:12:in `call'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-2.2.4/lib/rack/session/abstract/id.rb:266:in `context'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-2.2.4/lib/rack/session/abstract/id.rb:260:in `call'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/railties-6.1.6.1/lib/rails/rack/logger.rb:37:in `call_app'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/railties-6.1.6.1/lib/rails/rack/logger.rb:26:in `block in call'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/railties-6.1.6.1/lib/rails/rack/logger.rb:26:in `call'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-2.2.4/lib/rack/method_override.rb:24:in `call'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-2.2.4/lib/rack/runtime.rb:22:in `call'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-2.2.4/lib/rack/sendfile.rb:110:in `call'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/railties-6.1.6.1/lib/rails/engine.rb:539:in `call'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-2.2.4/lib/rack/urlmap.rb:74:in `block in call'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-2.2.4/lib/rack/urlmap.rb:58:in `each'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-2.2.4/lib/rack/urlmap.rb:58:in `call'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-2.2.4/lib/rack/builder.rb:244:in `call'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-test-2.0.2/lib/rack/test.rb:358:in `process_request'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-test-2.0.2/lib/rack/test.rb:165:in `custom_request'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-test-2.0.2/lib/rack/test.rb:114:in `get'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/capybara-3.37.1/lib/capybara/rack_test/browser.rb:74:in `process'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/capybara-3.37.1/lib/capybara/rack_test/browser.rb:49:in `process_and_follow_redirects'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/capybara-3.37.1/lib/capybara/rack_test/browser.rb:26:in `visit'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/capybara-3.37.1/lib/capybara/rack_test/driver.rb:46:in `visit'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/capybara-3.37.1/lib/capybara/session.rb:278:in `visit'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/capybara-3.37.1/lib/capybara/dsl.rb:52:in `call'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/capybara-3.37.1/lib/capybara/dsl.rb:52:in `visit'
+      # ./spec/system/books_spec.rb:20:in `block (3 levels) in <main>'
+      # ------------------
+      # --- Caused by: ---
+      # SassC::SyntaxError:
+      #   Error: property "display" must be followed by a ':'
+      #           on line 51:5 of stdin
+      #   >>     display;
+      #   
+      #      ----^
+      #   stdin:51
+
+  11) 投稿のテスト 一覧画面のテスト book削除のテスト application.html.erbにjavascript_pack_tagを含んでいるか
+      Failure/Error: <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+
+      ActionView::Template::Error:
+        Error: property "display" must be followed by a ':'
+                on line 51:5 of stdin
+        >>     display;
+
+           ----^
+      # stdin:51
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sassc-2.4.0/lib/sassc/engine.rb:50:in `render'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sassc-rails-2.1.2/lib/sassc/rails/compressor.rb:29:in `call'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-4.1.1/lib/sprockets/sass_compressor.rb:30:in `call'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-4.1.1/lib/sprockets/processor_utils.rb:84:in `call_processor'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-4.1.1/lib/sprockets/processor_utils.rb:66:in `block in call_processors'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-4.1.1/lib/sprockets/processor_utils.rb:65:in `reverse_each'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-4.1.1/lib/sprockets/processor_utils.rb:65:in `call_processors'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-4.1.1/lib/sprockets/loader.rb:182:in `load_from_unloaded'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-4.1.1/lib/sprockets/loader.rb:59:in `block in load'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-4.1.1/lib/sprockets/loader.rb:337:in `fetch_asset_from_dependency_cache'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-4.1.1/lib/sprockets/loader.rb:43:in `load'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-4.1.1/lib/sprockets/cached_environment.rb:44:in `block in load'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-4.1.1/lib/sprockets/cached_environment.rb:44:in `fetch'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-4.1.1/lib/sprockets/cached_environment.rb:44:in `load'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-4.1.1/lib/sprockets/base.rb:81:in `find_asset'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-4.1.1/lib/sprockets/base.rb:119:in `[]'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-rails-3.4.2/lib/sprockets/rails/helper.rb:358:in `find_asset'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-rails-3.4.2/lib/sprockets/rails/helper.rb:337:in `digest_path'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-rails-3.4.2/lib/sprockets/rails/helper.rb:326:in `asset_path'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-rails-3.4.2/lib/sprockets/rails/helper.rb:103:in `block in resolve_asset_path'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-rails-3.4.2/lib/sprockets/rails/helper.rb:243:in `block in resolve_asset'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-rails-3.4.2/lib/sprockets/rails/helper.rb:242:in `each'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-rails-3.4.2/lib/sprockets/rails/helper.rb:242:in `detect'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-rails-3.4.2/lib/sprockets/rails/helper.rb:242:in `resolve_asset'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-rails-3.4.2/lib/sprockets/rails/helper.rb:102:in `resolve_asset_path'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-rails-3.4.2/lib/sprockets/rails/helper.rb:80:in `compute_asset_path'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-rails-3.4.2/lib/sprockets/rails/helper.rb:186:in `block in stylesheet_link_tag'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-rails-3.4.2/lib/sprockets/rails/helper.rb:184:in `map'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-rails-3.4.2/lib/sprockets/rails/helper.rb:184:in `stylesheet_link_tag'
+      # ./app/views/layouts/application.html.erb:9:in `_app_views_layouts_application_html_erb__2079590097599370159_17940'
+      # <internal:kernel>:90:in `tap'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/actiontext-6.1.6.1/lib/action_text/rendering.rb:20:in `with_renderer'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/actiontext-6.1.6.1/lib/action_text/engine.rb:59:in `block (4 levels) in <class:Engine>'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-2.2.4/lib/rack/tempfile_reaper.rb:15:in `call'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-2.2.4/lib/rack/etag.rb:27:in `call'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-2.2.4/lib/rack/conditional_get.rb:27:in `call'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-2.2.4/lib/rack/head.rb:12:in `call'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-2.2.4/lib/rack/session/abstract/id.rb:266:in `context'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-2.2.4/lib/rack/session/abstract/id.rb:260:in `call'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/railties-6.1.6.1/lib/rails/rack/logger.rb:37:in `call_app'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/railties-6.1.6.1/lib/rails/rack/logger.rb:26:in `block in call'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/railties-6.1.6.1/lib/rails/rack/logger.rb:26:in `call'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-2.2.4/lib/rack/method_override.rb:24:in `call'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-2.2.4/lib/rack/runtime.rb:22:in `call'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-2.2.4/lib/rack/sendfile.rb:110:in `call'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/railties-6.1.6.1/lib/rails/engine.rb:539:in `call'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-2.2.4/lib/rack/urlmap.rb:74:in `block in call'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-2.2.4/lib/rack/urlmap.rb:58:in `each'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-2.2.4/lib/rack/urlmap.rb:58:in `call'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-2.2.4/lib/rack/builder.rb:244:in `call'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-test-2.0.2/lib/rack/test.rb:358:in `process_request'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-test-2.0.2/lib/rack/test.rb:165:in `custom_request'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-test-2.0.2/lib/rack/test.rb:114:in `get'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/capybara-3.37.1/lib/capybara/rack_test/browser.rb:74:in `process'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/capybara-3.37.1/lib/capybara/rack_test/browser.rb:49:in `process_and_follow_redirects'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/capybara-3.37.1/lib/capybara/rack_test/browser.rb:26:in `visit'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/capybara-3.37.1/lib/capybara/rack_test/driver.rb:46:in `visit'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/capybara-3.37.1/lib/capybara/session.rb:278:in `visit'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/capybara-3.37.1/lib/capybara/dsl.rb:52:in `call'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/capybara-3.37.1/lib/capybara/dsl.rb:52:in `visit'
+      # ./spec/system/books_spec.rb:20:in `block (3 levels) in <main>'
+      # ------------------
+      # --- Caused by: ---
+      # SassC::SyntaxError:
+      #   Error: property "display" must be followed by a ':'
+      #           on line 51:5 of stdin
+      #   >>     display;
+      #   
+      #      ----^
+      #   stdin:51
+
+  12) 投稿のテスト 一覧画面のテスト book削除のテスト bookの削除
+      Failure/Error: <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+
+      ActionView::Template::Error:
+        Error: property "display" must be followed by a ':'
+                on line 51:5 of stdin
+        >>     display;
+
+           ----^
+      # stdin:51
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sassc-2.4.0/lib/sassc/engine.rb:50:in `render'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sassc-rails-2.1.2/lib/sassc/rails/compressor.rb:29:in `call'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-4.1.1/lib/sprockets/sass_compressor.rb:30:in `call'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-4.1.1/lib/sprockets/processor_utils.rb:84:in `call_processor'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-4.1.1/lib/sprockets/processor_utils.rb:66:in `block in call_processors'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-4.1.1/lib/sprockets/processor_utils.rb:65:in `reverse_each'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-4.1.1/lib/sprockets/processor_utils.rb:65:in `call_processors'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-4.1.1/lib/sprockets/loader.rb:182:in `load_from_unloaded'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-4.1.1/lib/sprockets/loader.rb:59:in `block in load'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-4.1.1/lib/sprockets/loader.rb:337:in `fetch_asset_from_dependency_cache'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-4.1.1/lib/sprockets/loader.rb:43:in `load'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-4.1.1/lib/sprockets/cached_environment.rb:44:in `block in load'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-4.1.1/lib/sprockets/cached_environment.rb:44:in `fetch'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-4.1.1/lib/sprockets/cached_environment.rb:44:in `load'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-4.1.1/lib/sprockets/base.rb:81:in `find_asset'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-4.1.1/lib/sprockets/base.rb:119:in `[]'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-rails-3.4.2/lib/sprockets/rails/helper.rb:358:in `find_asset'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-rails-3.4.2/lib/sprockets/rails/helper.rb:337:in `digest_path'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-rails-3.4.2/lib/sprockets/rails/helper.rb:326:in `asset_path'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-rails-3.4.2/lib/sprockets/rails/helper.rb:103:in `block in resolve_asset_path'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-rails-3.4.2/lib/sprockets/rails/helper.rb:243:in `block in resolve_asset'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-rails-3.4.2/lib/sprockets/rails/helper.rb:242:in `each'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-rails-3.4.2/lib/sprockets/rails/helper.rb:242:in `detect'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-rails-3.4.2/lib/sprockets/rails/helper.rb:242:in `resolve_asset'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-rails-3.4.2/lib/sprockets/rails/helper.rb:102:in `resolve_asset_path'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-rails-3.4.2/lib/sprockets/rails/helper.rb:80:in `compute_asset_path'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-rails-3.4.2/lib/sprockets/rails/helper.rb:186:in `block in stylesheet_link_tag'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-rails-3.4.2/lib/sprockets/rails/helper.rb:184:in `map'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-rails-3.4.2/lib/sprockets/rails/helper.rb:184:in `stylesheet_link_tag'
+      # ./app/views/layouts/application.html.erb:9:in `_app_views_layouts_application_html_erb__2079590097599370159_17940'
+      # <internal:kernel>:90:in `tap'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/actiontext-6.1.6.1/lib/action_text/rendering.rb:20:in `with_renderer'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/actiontext-6.1.6.1/lib/action_text/engine.rb:59:in `block (4 levels) in <class:Engine>'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-2.2.4/lib/rack/tempfile_reaper.rb:15:in `call'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-2.2.4/lib/rack/etag.rb:27:in `call'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-2.2.4/lib/rack/conditional_get.rb:27:in `call'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-2.2.4/lib/rack/head.rb:12:in `call'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-2.2.4/lib/rack/session/abstract/id.rb:266:in `context'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-2.2.4/lib/rack/session/abstract/id.rb:260:in `call'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/railties-6.1.6.1/lib/rails/rack/logger.rb:37:in `call_app'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/railties-6.1.6.1/lib/rails/rack/logger.rb:26:in `block in call'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/railties-6.1.6.1/lib/rails/rack/logger.rb:26:in `call'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-2.2.4/lib/rack/method_override.rb:24:in `call'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-2.2.4/lib/rack/runtime.rb:22:in `call'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-2.2.4/lib/rack/sendfile.rb:110:in `call'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/railties-6.1.6.1/lib/rails/engine.rb:539:in `call'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-2.2.4/lib/rack/urlmap.rb:74:in `block in call'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-2.2.4/lib/rack/urlmap.rb:58:in `each'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-2.2.4/lib/rack/urlmap.rb:58:in `call'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-2.2.4/lib/rack/builder.rb:244:in `call'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-test-2.0.2/lib/rack/test.rb:358:in `process_request'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-test-2.0.2/lib/rack/test.rb:165:in `custom_request'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-test-2.0.2/lib/rack/test.rb:114:in `get'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/capybara-3.37.1/lib/capybara/rack_test/browser.rb:74:in `process'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/capybara-3.37.1/lib/capybara/rack_test/browser.rb:49:in `process_and_follow_redirects'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/capybara-3.37.1/lib/capybara/rack_test/browser.rb:26:in `visit'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/capybara-3.37.1/lib/capybara/rack_test/driver.rb:46:in `visit'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/capybara-3.37.1/lib/capybara/session.rb:278:in `visit'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/capybara-3.37.1/lib/capybara/dsl.rb:52:in `call'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/capybara-3.37.1/lib/capybara/dsl.rb:52:in `visit'
+      # ./spec/system/books_spec.rb:20:in `block (3 levels) in <main>'
+      # ------------------
+      # --- Caused by: ---
+      # SassC::SyntaxError:
+      #   Error: property "display" must be followed by a ':'
+      #           on line 51:5 of stdin
+      #   >>     display;
+      #   
+      #      ----^
+      #   stdin:51
+
+  13) 投稿のテスト 詳細画面のテスト 表示の確認 本のタイトルと感想が画面に表示されていること
+      Failure/Error: <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+
+      ActionView::Template::Error:
+        Error: property "display" must be followed by a ':'
+                on line 51:5 of stdin
+        >>     display;
+
+           ----^
+      # stdin:51
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sassc-2.4.0/lib/sassc/engine.rb:50:in `render'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sassc-rails-2.1.2/lib/sassc/rails/compressor.rb:29:in `call'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-4.1.1/lib/sprockets/sass_compressor.rb:30:in `call'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-4.1.1/lib/sprockets/processor_utils.rb:84:in `call_processor'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-4.1.1/lib/sprockets/processor_utils.rb:66:in `block in call_processors'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-4.1.1/lib/sprockets/processor_utils.rb:65:in `reverse_each'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-4.1.1/lib/sprockets/processor_utils.rb:65:in `call_processors'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-4.1.1/lib/sprockets/loader.rb:182:in `load_from_unloaded'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-4.1.1/lib/sprockets/loader.rb:59:in `block in load'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-4.1.1/lib/sprockets/loader.rb:337:in `fetch_asset_from_dependency_cache'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-4.1.1/lib/sprockets/loader.rb:43:in `load'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-4.1.1/lib/sprockets/cached_environment.rb:44:in `block in load'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-4.1.1/lib/sprockets/cached_environment.rb:44:in `fetch'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-4.1.1/lib/sprockets/cached_environment.rb:44:in `load'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-4.1.1/lib/sprockets/base.rb:81:in `find_asset'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-4.1.1/lib/sprockets/base.rb:119:in `[]'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-rails-3.4.2/lib/sprockets/rails/helper.rb:358:in `find_asset'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-rails-3.4.2/lib/sprockets/rails/helper.rb:337:in `digest_path'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-rails-3.4.2/lib/sprockets/rails/helper.rb:326:in `asset_path'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-rails-3.4.2/lib/sprockets/rails/helper.rb:103:in `block in resolve_asset_path'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-rails-3.4.2/lib/sprockets/rails/helper.rb:243:in `block in resolve_asset'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-rails-3.4.2/lib/sprockets/rails/helper.rb:242:in `each'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-rails-3.4.2/lib/sprockets/rails/helper.rb:242:in `detect'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-rails-3.4.2/lib/sprockets/rails/helper.rb:242:in `resolve_asset'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-rails-3.4.2/lib/sprockets/rails/helper.rb:102:in `resolve_asset_path'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-rails-3.4.2/lib/sprockets/rails/helper.rb:80:in `compute_asset_path'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-rails-3.4.2/lib/sprockets/rails/helper.rb:186:in `block in stylesheet_link_tag'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-rails-3.4.2/lib/sprockets/rails/helper.rb:184:in `map'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-rails-3.4.2/lib/sprockets/rails/helper.rb:184:in `stylesheet_link_tag'
+      # ./app/views/layouts/application.html.erb:9:in `_app_views_layouts_application_html_erb__2079590097599370159_17940'
+      # <internal:kernel>:90:in `tap'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/actiontext-6.1.6.1/lib/action_text/rendering.rb:20:in `with_renderer'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/actiontext-6.1.6.1/lib/action_text/engine.rb:59:in `block (4 levels) in <class:Engine>'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-2.2.4/lib/rack/tempfile_reaper.rb:15:in `call'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-2.2.4/lib/rack/etag.rb:27:in `call'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-2.2.4/lib/rack/conditional_get.rb:27:in `call'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-2.2.4/lib/rack/head.rb:12:in `call'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-2.2.4/lib/rack/session/abstract/id.rb:266:in `context'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-2.2.4/lib/rack/session/abstract/id.rb:260:in `call'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/railties-6.1.6.1/lib/rails/rack/logger.rb:37:in `call_app'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/railties-6.1.6.1/lib/rails/rack/logger.rb:26:in `block in call'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/railties-6.1.6.1/lib/rails/rack/logger.rb:26:in `call'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-2.2.4/lib/rack/method_override.rb:24:in `call'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-2.2.4/lib/rack/runtime.rb:22:in `call'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-2.2.4/lib/rack/sendfile.rb:110:in `call'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/railties-6.1.6.1/lib/rails/engine.rb:539:in `call'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-2.2.4/lib/rack/urlmap.rb:74:in `block in call'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-2.2.4/lib/rack/urlmap.rb:58:in `each'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-2.2.4/lib/rack/urlmap.rb:58:in `call'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-2.2.4/lib/rack/builder.rb:244:in `call'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-test-2.0.2/lib/rack/test.rb:358:in `process_request'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-test-2.0.2/lib/rack/test.rb:165:in `custom_request'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-test-2.0.2/lib/rack/test.rb:114:in `get'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/capybara-3.37.1/lib/capybara/rack_test/browser.rb:74:in `process'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/capybara-3.37.1/lib/capybara/rack_test/browser.rb:49:in `process_and_follow_redirects'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/capybara-3.37.1/lib/capybara/rack_test/browser.rb:26:in `visit'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/capybara-3.37.1/lib/capybara/rack_test/driver.rb:46:in `visit'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/capybara-3.37.1/lib/capybara/session.rb:278:in `visit'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/capybara-3.37.1/lib/capybara/dsl.rb:52:in `call'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/capybara-3.37.1/lib/capybara/dsl.rb:52:in `visit'
+      # ./spec/system/books_spec.rb:97:in `block (3 levels) in <main>'
+      # ------------------
+      # --- Caused by: ---
+      # SassC::SyntaxError:
+      #   Error: property "display" must be followed by a ':'
+      #           on line 51:5 of stdin
+      #   >>     display;
+      #   
+      #      ----^
+      #   stdin:51
+
+  14) 投稿のテスト 詳細画面のテスト 表示の確認 Editリンクが表示される
+      Failure/Error: <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+
+      ActionView::Template::Error:
+        Error: property "display" must be followed by a ':'
+                on line 51:5 of stdin
+        >>     display;
+
+           ----^
+      # stdin:51
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sassc-2.4.0/lib/sassc/engine.rb:50:in `render'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sassc-rails-2.1.2/lib/sassc/rails/compressor.rb:29:in `call'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-4.1.1/lib/sprockets/sass_compressor.rb:30:in `call'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-4.1.1/lib/sprockets/processor_utils.rb:84:in `call_processor'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-4.1.1/lib/sprockets/processor_utils.rb:66:in `block in call_processors'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-4.1.1/lib/sprockets/processor_utils.rb:65:in `reverse_each'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-4.1.1/lib/sprockets/processor_utils.rb:65:in `call_processors'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-4.1.1/lib/sprockets/loader.rb:182:in `load_from_unloaded'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-4.1.1/lib/sprockets/loader.rb:59:in `block in load'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-4.1.1/lib/sprockets/loader.rb:337:in `fetch_asset_from_dependency_cache'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-4.1.1/lib/sprockets/loader.rb:43:in `load'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-4.1.1/lib/sprockets/cached_environment.rb:44:in `block in load'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-4.1.1/lib/sprockets/cached_environment.rb:44:in `fetch'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-4.1.1/lib/sprockets/cached_environment.rb:44:in `load'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-4.1.1/lib/sprockets/base.rb:81:in `find_asset'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-4.1.1/lib/sprockets/base.rb:119:in `[]'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-rails-3.4.2/lib/sprockets/rails/helper.rb:358:in `find_asset'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-rails-3.4.2/lib/sprockets/rails/helper.rb:337:in `digest_path'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-rails-3.4.2/lib/sprockets/rails/helper.rb:326:in `asset_path'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-rails-3.4.2/lib/sprockets/rails/helper.rb:103:in `block in resolve_asset_path'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-rails-3.4.2/lib/sprockets/rails/helper.rb:243:in `block in resolve_asset'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-rails-3.4.2/lib/sprockets/rails/helper.rb:242:in `each'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-rails-3.4.2/lib/sprockets/rails/helper.rb:242:in `detect'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-rails-3.4.2/lib/sprockets/rails/helper.rb:242:in `resolve_asset'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-rails-3.4.2/lib/sprockets/rails/helper.rb:102:in `resolve_asset_path'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-rails-3.4.2/lib/sprockets/rails/helper.rb:80:in `compute_asset_path'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-rails-3.4.2/lib/sprockets/rails/helper.rb:186:in `block in stylesheet_link_tag'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-rails-3.4.2/lib/sprockets/rails/helper.rb:184:in `map'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-rails-3.4.2/lib/sprockets/rails/helper.rb:184:in `stylesheet_link_tag'
+      # ./app/views/layouts/application.html.erb:9:in `_app_views_layouts_application_html_erb__2079590097599370159_17940'
+      # <internal:kernel>:90:in `tap'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/actiontext-6.1.6.1/lib/action_text/rendering.rb:20:in `with_renderer'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/actiontext-6.1.6.1/lib/action_text/engine.rb:59:in `block (4 levels) in <class:Engine>'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-2.2.4/lib/rack/tempfile_reaper.rb:15:in `call'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-2.2.4/lib/rack/etag.rb:27:in `call'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-2.2.4/lib/rack/conditional_get.rb:27:in `call'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-2.2.4/lib/rack/head.rb:12:in `call'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-2.2.4/lib/rack/session/abstract/id.rb:266:in `context'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-2.2.4/lib/rack/session/abstract/id.rb:260:in `call'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/railties-6.1.6.1/lib/rails/rack/logger.rb:37:in `call_app'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/railties-6.1.6.1/lib/rails/rack/logger.rb:26:in `block in call'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/railties-6.1.6.1/lib/rails/rack/logger.rb:26:in `call'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-2.2.4/lib/rack/method_override.rb:24:in `call'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-2.2.4/lib/rack/runtime.rb:22:in `call'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-2.2.4/lib/rack/sendfile.rb:110:in `call'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/railties-6.1.6.1/lib/rails/engine.rb:539:in `call'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-2.2.4/lib/rack/urlmap.rb:74:in `block in call'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-2.2.4/lib/rack/urlmap.rb:58:in `each'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-2.2.4/lib/rack/urlmap.rb:58:in `call'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-2.2.4/lib/rack/builder.rb:244:in `call'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-test-2.0.2/lib/rack/test.rb:358:in `process_request'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-test-2.0.2/lib/rack/test.rb:165:in `custom_request'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-test-2.0.2/lib/rack/test.rb:114:in `get'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/capybara-3.37.1/lib/capybara/rack_test/browser.rb:74:in `process'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/capybara-3.37.1/lib/capybara/rack_test/browser.rb:49:in `process_and_follow_redirects'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/capybara-3.37.1/lib/capybara/rack_test/browser.rb:26:in `visit'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/capybara-3.37.1/lib/capybara/rack_test/driver.rb:46:in `visit'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/capybara-3.37.1/lib/capybara/session.rb:278:in `visit'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/capybara-3.37.1/lib/capybara/dsl.rb:52:in `call'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/capybara-3.37.1/lib/capybara/dsl.rb:52:in `visit'
+      # ./spec/system/books_spec.rb:97:in `block (3 levels) in <main>'
+      # ------------------
+      # --- Caused by: ---
+      # SassC::SyntaxError:
+      #   Error: property "display" must be followed by a ':'
+      #           on line 51:5 of stdin
+      #   >>     display;
+      #   
+      #      ----^
+      #   stdin:51
+
+  15) 投稿のテスト 詳細画面のテスト 表示の確認 Backリンクが表示される
+      Failure/Error: <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+
+      ActionView::Template::Error:
+        Error: property "display" must be followed by a ':'
+                on line 51:5 of stdin
+        >>     display;
+
+           ----^
+      # stdin:51
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sassc-2.4.0/lib/sassc/engine.rb:50:in `render'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sassc-rails-2.1.2/lib/sassc/rails/compressor.rb:29:in `call'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-4.1.1/lib/sprockets/sass_compressor.rb:30:in `call'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-4.1.1/lib/sprockets/processor_utils.rb:84:in `call_processor'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-4.1.1/lib/sprockets/processor_utils.rb:66:in `block in call_processors'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-4.1.1/lib/sprockets/processor_utils.rb:65:in `reverse_each'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-4.1.1/lib/sprockets/processor_utils.rb:65:in `call_processors'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-4.1.1/lib/sprockets/loader.rb:182:in `load_from_unloaded'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-4.1.1/lib/sprockets/loader.rb:59:in `block in load'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-4.1.1/lib/sprockets/loader.rb:337:in `fetch_asset_from_dependency_cache'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-4.1.1/lib/sprockets/loader.rb:43:in `load'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-4.1.1/lib/sprockets/cached_environment.rb:44:in `block in load'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-4.1.1/lib/sprockets/cached_environment.rb:44:in `fetch'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-4.1.1/lib/sprockets/cached_environment.rb:44:in `load'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-4.1.1/lib/sprockets/base.rb:81:in `find_asset'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-4.1.1/lib/sprockets/base.rb:119:in `[]'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-rails-3.4.2/lib/sprockets/rails/helper.rb:358:in `find_asset'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-rails-3.4.2/lib/sprockets/rails/helper.rb:337:in `digest_path'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-rails-3.4.2/lib/sprockets/rails/helper.rb:326:in `asset_path'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-rails-3.4.2/lib/sprockets/rails/helper.rb:103:in `block in resolve_asset_path'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-rails-3.4.2/lib/sprockets/rails/helper.rb:243:in `block in resolve_asset'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-rails-3.4.2/lib/sprockets/rails/helper.rb:242:in `each'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-rails-3.4.2/lib/sprockets/rails/helper.rb:242:in `detect'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-rails-3.4.2/lib/sprockets/rails/helper.rb:242:in `resolve_asset'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-rails-3.4.2/lib/sprockets/rails/helper.rb:102:in `resolve_asset_path'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-rails-3.4.2/lib/sprockets/rails/helper.rb:80:in `compute_asset_path'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-rails-3.4.2/lib/sprockets/rails/helper.rb:186:in `block in stylesheet_link_tag'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-rails-3.4.2/lib/sprockets/rails/helper.rb:184:in `map'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-rails-3.4.2/lib/sprockets/rails/helper.rb:184:in `stylesheet_link_tag'
+      # ./app/views/layouts/application.html.erb:9:in `_app_views_layouts_application_html_erb__2079590097599370159_17940'
+      # <internal:kernel>:90:in `tap'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/actiontext-6.1.6.1/lib/action_text/rendering.rb:20:in `with_renderer'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/actiontext-6.1.6.1/lib/action_text/engine.rb:59:in `block (4 levels) in <class:Engine>'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-2.2.4/lib/rack/tempfile_reaper.rb:15:in `call'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-2.2.4/lib/rack/etag.rb:27:in `call'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-2.2.4/lib/rack/conditional_get.rb:27:in `call'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-2.2.4/lib/rack/head.rb:12:in `call'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-2.2.4/lib/rack/session/abstract/id.rb:266:in `context'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-2.2.4/lib/rack/session/abstract/id.rb:260:in `call'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/railties-6.1.6.1/lib/rails/rack/logger.rb:37:in `call_app'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/railties-6.1.6.1/lib/rails/rack/logger.rb:26:in `block in call'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/railties-6.1.6.1/lib/rails/rack/logger.rb:26:in `call'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-2.2.4/lib/rack/method_override.rb:24:in `call'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-2.2.4/lib/rack/runtime.rb:22:in `call'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-2.2.4/lib/rack/sendfile.rb:110:in `call'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/railties-6.1.6.1/lib/rails/engine.rb:539:in `call'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-2.2.4/lib/rack/urlmap.rb:74:in `block in call'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-2.2.4/lib/rack/urlmap.rb:58:in `each'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-2.2.4/lib/rack/urlmap.rb:58:in `call'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-2.2.4/lib/rack/builder.rb:244:in `call'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-test-2.0.2/lib/rack/test.rb:358:in `process_request'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-test-2.0.2/lib/rack/test.rb:165:in `custom_request'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-test-2.0.2/lib/rack/test.rb:114:in `get'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/capybara-3.37.1/lib/capybara/rack_test/browser.rb:74:in `process'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/capybara-3.37.1/lib/capybara/rack_test/browser.rb:49:in `process_and_follow_redirects'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/capybara-3.37.1/lib/capybara/rack_test/browser.rb:26:in `visit'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/capybara-3.37.1/lib/capybara/rack_test/driver.rb:46:in `visit'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/capybara-3.37.1/lib/capybara/session.rb:278:in `visit'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/capybara-3.37.1/lib/capybara/dsl.rb:52:in `call'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/capybara-3.37.1/lib/capybara/dsl.rb:52:in `visit'
+      # ./spec/system/books_spec.rb:97:in `block (3 levels) in <main>'
+      # ------------------
+      # --- Caused by: ---
+      # SassC::SyntaxError:
+      #   Error: property "display" must be followed by a ':'
+      #           on line 51:5 of stdin
+      #   >>     display;
+      #   
+      #      ----^
+      #   stdin:51
+
+  16) 投稿のテスト 詳細画面のテスト リンクの遷移先の確認 Editの遷移先は編集画面か
+      Failure/Error: <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+
+      ActionView::Template::Error:
+        Error: property "display" must be followed by a ':'
+                on line 51:5 of stdin
+        >>     display;
+
+           ----^
+      # stdin:51
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sassc-2.4.0/lib/sassc/engine.rb:50:in `render'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sassc-rails-2.1.2/lib/sassc/rails/compressor.rb:29:in `call'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-4.1.1/lib/sprockets/sass_compressor.rb:30:in `call'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-4.1.1/lib/sprockets/processor_utils.rb:84:in `call_processor'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-4.1.1/lib/sprockets/processor_utils.rb:66:in `block in call_processors'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-4.1.1/lib/sprockets/processor_utils.rb:65:in `reverse_each'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-4.1.1/lib/sprockets/processor_utils.rb:65:in `call_processors'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-4.1.1/lib/sprockets/loader.rb:182:in `load_from_unloaded'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-4.1.1/lib/sprockets/loader.rb:59:in `block in load'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-4.1.1/lib/sprockets/loader.rb:337:in `fetch_asset_from_dependency_cache'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-4.1.1/lib/sprockets/loader.rb:43:in `load'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-4.1.1/lib/sprockets/cached_environment.rb:44:in `block in load'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-4.1.1/lib/sprockets/cached_environment.rb:44:in `fetch'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-4.1.1/lib/sprockets/cached_environment.rb:44:in `load'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-4.1.1/lib/sprockets/base.rb:81:in `find_asset'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-4.1.1/lib/sprockets/base.rb:119:in `[]'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-rails-3.4.2/lib/sprockets/rails/helper.rb:358:in `find_asset'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-rails-3.4.2/lib/sprockets/rails/helper.rb:337:in `digest_path'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-rails-3.4.2/lib/sprockets/rails/helper.rb:326:in `asset_path'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-rails-3.4.2/lib/sprockets/rails/helper.rb:103:in `block in resolve_asset_path'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-rails-3.4.2/lib/sprockets/rails/helper.rb:243:in `block in resolve_asset'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-rails-3.4.2/lib/sprockets/rails/helper.rb:242:in `each'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-rails-3.4.2/lib/sprockets/rails/helper.rb:242:in `detect'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-rails-3.4.2/lib/sprockets/rails/helper.rb:242:in `resolve_asset'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-rails-3.4.2/lib/sprockets/rails/helper.rb:102:in `resolve_asset_path'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-rails-3.4.2/lib/sprockets/rails/helper.rb:80:in `compute_asset_path'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-rails-3.4.2/lib/sprockets/rails/helper.rb:186:in `block in stylesheet_link_tag'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-rails-3.4.2/lib/sprockets/rails/helper.rb:184:in `map'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-rails-3.4.2/lib/sprockets/rails/helper.rb:184:in `stylesheet_link_tag'
+      # ./app/views/layouts/application.html.erb:9:in `_app_views_layouts_application_html_erb__2079590097599370159_17940'
+      # <internal:kernel>:90:in `tap'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/actiontext-6.1.6.1/lib/action_text/rendering.rb:20:in `with_renderer'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/actiontext-6.1.6.1/lib/action_text/engine.rb:59:in `block (4 levels) in <class:Engine>'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-2.2.4/lib/rack/tempfile_reaper.rb:15:in `call'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-2.2.4/lib/rack/etag.rb:27:in `call'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-2.2.4/lib/rack/conditional_get.rb:27:in `call'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-2.2.4/lib/rack/head.rb:12:in `call'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-2.2.4/lib/rack/session/abstract/id.rb:266:in `context'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-2.2.4/lib/rack/session/abstract/id.rb:260:in `call'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/railties-6.1.6.1/lib/rails/rack/logger.rb:37:in `call_app'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/railties-6.1.6.1/lib/rails/rack/logger.rb:26:in `block in call'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/railties-6.1.6.1/lib/rails/rack/logger.rb:26:in `call'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-2.2.4/lib/rack/method_override.rb:24:in `call'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-2.2.4/lib/rack/runtime.rb:22:in `call'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-2.2.4/lib/rack/sendfile.rb:110:in `call'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/railties-6.1.6.1/lib/rails/engine.rb:539:in `call'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-2.2.4/lib/rack/urlmap.rb:74:in `block in call'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-2.2.4/lib/rack/urlmap.rb:58:in `each'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-2.2.4/lib/rack/urlmap.rb:58:in `call'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-2.2.4/lib/rack/builder.rb:244:in `call'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-test-2.0.2/lib/rack/test.rb:358:in `process_request'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-test-2.0.2/lib/rack/test.rb:165:in `custom_request'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-test-2.0.2/lib/rack/test.rb:114:in `get'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/capybara-3.37.1/lib/capybara/rack_test/browser.rb:74:in `process'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/capybara-3.37.1/lib/capybara/rack_test/browser.rb:49:in `process_and_follow_redirects'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/capybara-3.37.1/lib/capybara/rack_test/browser.rb:26:in `visit'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/capybara-3.37.1/lib/capybara/rack_test/driver.rb:46:in `visit'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/capybara-3.37.1/lib/capybara/session.rb:278:in `visit'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/capybara-3.37.1/lib/capybara/dsl.rb:52:in `call'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/capybara-3.37.1/lib/capybara/dsl.rb:52:in `visit'
+      # ./spec/system/books_spec.rb:97:in `block (3 levels) in <main>'
+      # ------------------
+      # --- Caused by: ---
+      # SassC::SyntaxError:
+      #   Error: property "display" must be followed by a ':'
+      #           on line 51:5 of stdin
+      #   >>     display;
+      #   
+      #      ----^
+      #   stdin:51
+
+  17) 投稿のテスト 詳細画面のテスト リンクの遷移先の確認 Backの遷移先は一覧画面か
+      Failure/Error: <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+
+      ActionView::Template::Error:
+        Error: property "display" must be followed by a ':'
+                on line 51:5 of stdin
+        >>     display;
+
+           ----^
+      # stdin:51
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sassc-2.4.0/lib/sassc/engine.rb:50:in `render'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sassc-rails-2.1.2/lib/sassc/rails/compressor.rb:29:in `call'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-4.1.1/lib/sprockets/sass_compressor.rb:30:in `call'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-4.1.1/lib/sprockets/processor_utils.rb:84:in `call_processor'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-4.1.1/lib/sprockets/processor_utils.rb:66:in `block in call_processors'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-4.1.1/lib/sprockets/processor_utils.rb:65:in `reverse_each'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-4.1.1/lib/sprockets/processor_utils.rb:65:in `call_processors'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-4.1.1/lib/sprockets/loader.rb:182:in `load_from_unloaded'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-4.1.1/lib/sprockets/loader.rb:59:in `block in load'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-4.1.1/lib/sprockets/loader.rb:337:in `fetch_asset_from_dependency_cache'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-4.1.1/lib/sprockets/loader.rb:43:in `load'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-4.1.1/lib/sprockets/cached_environment.rb:44:in `block in load'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-4.1.1/lib/sprockets/cached_environment.rb:44:in `fetch'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-4.1.1/lib/sprockets/cached_environment.rb:44:in `load'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-4.1.1/lib/sprockets/base.rb:81:in `find_asset'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-4.1.1/lib/sprockets/base.rb:119:in `[]'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-rails-3.4.2/lib/sprockets/rails/helper.rb:358:in `find_asset'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-rails-3.4.2/lib/sprockets/rails/helper.rb:337:in `digest_path'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-rails-3.4.2/lib/sprockets/rails/helper.rb:326:in `asset_path'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-rails-3.4.2/lib/sprockets/rails/helper.rb:103:in `block in resolve_asset_path'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-rails-3.4.2/lib/sprockets/rails/helper.rb:243:in `block in resolve_asset'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-rails-3.4.2/lib/sprockets/rails/helper.rb:242:in `each'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-rails-3.4.2/lib/sprockets/rails/helper.rb:242:in `detect'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-rails-3.4.2/lib/sprockets/rails/helper.rb:242:in `resolve_asset'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-rails-3.4.2/lib/sprockets/rails/helper.rb:102:in `resolve_asset_path'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-rails-3.4.2/lib/sprockets/rails/helper.rb:80:in `compute_asset_path'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-rails-3.4.2/lib/sprockets/rails/helper.rb:186:in `block in stylesheet_link_tag'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-rails-3.4.2/lib/sprockets/rails/helper.rb:184:in `map'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/sprockets-rails-3.4.2/lib/sprockets/rails/helper.rb:184:in `stylesheet_link_tag'
+      # ./app/views/layouts/application.html.erb:9:in `_app_views_layouts_application_html_erb__2079590097599370159_17940'
+      # <internal:kernel>:90:in `tap'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/actiontext-6.1.6.1/lib/action_text/rendering.rb:20:in `with_renderer'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/actiontext-6.1.6.1/lib/action_text/engine.rb:59:in `block (4 levels) in <class:Engine>'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-2.2.4/lib/rack/tempfile_reaper.rb:15:in `call'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-2.2.4/lib/rack/etag.rb:27:in `call'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-2.2.4/lib/rack/conditional_get.rb:27:in `call'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-2.2.4/lib/rack/head.rb:12:in `call'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-2.2.4/lib/rack/session/abstract/id.rb:266:in `context'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-2.2.4/lib/rack/session/abstract/id.rb:260:in `call'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/railties-6.1.6.1/lib/rails/rack/logger.rb:37:in `call_app'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/railties-6.1.6.1/lib/rails/rack/logger.rb:26:in `block in call'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/railties-6.1.6.1/lib/rails/rack/logger.rb:26:in `call'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-2.2.4/lib/rack/method_override.rb:24:in `call'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-2.2.4/lib/rack/runtime.rb:22:in `call'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-2.2.4/lib/rack/sendfile.rb:110:in `call'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/railties-6.1.6.1/lib/rails/engine.rb:539:in `call'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-2.2.4/lib/rack/urlmap.rb:74:in `block in call'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-2.2.4/lib/rack/urlmap.rb:58:in `each'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-2.2.4/lib/rack/urlmap.rb:58:in `call'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-2.2.4/lib/rack/builder.rb:244:in `call'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-test-2.0.2/lib/rack/test.rb:358:in `process_request'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-test-2.0.2/lib/rack/test.rb:165:in `custom_request'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-test-2.0.2/lib/rack/test.rb:114:in `get'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/capybara-3.37.1/lib/capybara/rack_test/browser.rb:74:in `process'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/capybara-3.37.1/lib/capybara/rack_test/browser.rb:49:in `process_and_follow_redirects'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/capybara-3.37.1/lib/capybara/rack_test/browser.rb:26:in `visit'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/capybara-3.37.1/lib/capybara/rack_test/driver.rb:46:in `visit'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/capybara-3.37.1/lib/capybara/session.rb:278:in `visit'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/capybara-3.37.1/lib/capybara/dsl.rb:52:in `call'
+      # /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/capybara-3.37.1/lib/capybara/dsl.rb:52:in `visit'
+      # ./spec/system/books_spec.rb:97:in `block (3 levels) in <main>'
+      # ------------------
+      # --- Caused by: ---
+      # SassC::SyntaxError:
+      #   Error: property "display" must be followed by a ':'
+      #           on line 51:5 of stdin
+      #   >>     display;
+      #   
+      #      ----^
+      #   stdin:51
+
+  18) 投稿のテスト 編集画面のテスト 表示の確認 編集前のタイトルと感想がフォームに表示(セット)されている
+      Failure/Error: visit edit_book_path(book)
+
+      NoMethodError:
+        undefined method `edit_book_path' for #<RSpec::ExampleGroups::Nested::Nested_3::Nested "編集前のタイトルと感想がフォームに表示(セット)されている" (./spec/system/books_spec.rb:131)>
+      # ./spec/system/books_spec.rb:128:in `block (3 levels) in <main>'
+
+  19) 投稿のテスト 編集画面のテスト 表示の確認 Update Bookボタンが表示される
+      Failure/Error: visit edit_book_path(book)
+
+      NoMethodError:
+        undefined method `edit_book_path' for #<RSpec::ExampleGroups::Nested::Nested_3::Nested "Update Bookボタンが表示される" (./spec/system/books_spec.rb:135)>
+      # ./spec/system/books_spec.rb:128:in `block (3 levels) in <main>'
+
+  20) 投稿のテスト 編集画面のテスト 表示の確認 Showリンクが表示される
+      Failure/Error: visit edit_book_path(book)
+
+      NoMethodError:
+        undefined method `edit_book_path' for #<RSpec::ExampleGroups::Nested::Nested_3::Nested "Showリンクが表示される" (./spec/system/books_spec.rb:138)>
+      # ./spec/system/books_spec.rb:128:in `block (3 levels) in <main>'
+
+  21) 投稿のテスト 編集画面のテスト 表示の確認 Backリンクが表示される
+      Failure/Error: visit edit_book_path(book)
+
+      NoMethodError:
+        undefined method `edit_book_path' for #<RSpec::ExampleGroups::Nested::Nested_3::Nested "Backリンクが表示される" (./spec/system/books_spec.rb:142)>
+      # ./spec/system/books_spec.rb:128:in `block (3 levels) in <main>'
+
+  22) 投稿のテスト 編集画面のテスト リンクの遷移先の確認 Showの遷移先は詳細画面か
+      Failure/Error: visit edit_book_path(book)
+
+      NoMethodError:
+        undefined method `edit_book_path' for #<RSpec::ExampleGroups::Nested::Nested_3::Nested_2 "Showの遷移先は詳細画面か" (./spec/system/books_spec.rb:148)>
+      # ./spec/system/books_spec.rb:128:in `block (3 levels) in <main>'
+
+  23) 投稿のテスト 編集画面のテスト リンクの遷移先の確認 Backの遷移先は一覧画面か
+      Failure/Error: visit edit_book_path(book)
+
+      NoMethodError:
+        undefined method `edit_book_path' for #<RSpec::ExampleGroups::Nested::Nested_3::Nested_2 "Backの遷移先は一覧画面か" (./spec/system/books_spec.rb:153)>
+      # ./spec/system/books_spec.rb:128:in `block (3 levels) in <main>'
+
+  24) 投稿のテスト 編集画面のテスト 更新処理に関するテスト 更新に成功しサクセスメッセージが表示されるか
+      Failure/Error: visit edit_book_path(book)
+
+      NoMethodError:
+        undefined method `edit_book_path' for #<RSpec::ExampleGroups::Nested::Nested_3::Nested_3 "更新に成功しサクセスメッセージが表示されるか" (./spec/system/books_spec.rb:160)>
+      # ./spec/system/books_spec.rb:128:in `block (3 levels) in <main>'
+
+  25) 投稿のテスト 編集画面のテスト 更新処理に関するテスト 更新に失敗しエラーメッセージが表示されるか
+      Failure/Error: visit edit_book_path(book)
+
+      NoMethodError:
+        undefined method `edit_book_path' for #<RSpec::ExampleGroups::Nested::Nested_3::Nested_3 "更新に失敗しエラーメッセージが表示されるか" (./spec/system/books_spec.rb:166)>
+      # ./spec/system/books_spec.rb:128:in `block (3 levels) in <main>'
+
+  26) 投稿のテスト 編集画面のテスト 更新処理に関するテスト 更新後のリダイレクト先は正しいか
+      Failure/Error: visit edit_book_path(book)
+
+      NoMethodError:
+        undefined method `edit_book_path' for #<RSpec::ExampleGroups::Nested::Nested_3::Nested_3 "更新後のリダイレクト先は正しいか" (./spec/system/books_spec.rb:172)>
+      # ./spec/system/books_spec.rb:128:in `block (3 levels) in <main>'
+
+Finished in 0.61454 seconds (files took 1 second to load)
+29 examples, 26 failures
+
+Failed examples:
+
+rspec ./spec/models/book_spec.rb:28 # Book モデルに関するテスト titleを空白で投稿した場合に画面にエラーメッセージが表示されているか エラーメッセージは正しく表示されるか
+rspec ./spec/models/book_spec.rb:38 # Book モデルに関するテスト bodyを空白で投稿した場合に画面にエラーメッセージが表示されているか エラーメッセージは正しく表示されるか
+rspec ./spec/system/books_spec.rb:10 # 投稿のテスト トップ画面(root_path)のテスト 表示の確認 トップ画面(root_path)に一覧ページへのリンクが表示されているか
+rspec ./spec/system/books_spec.rb:13 # 投稿のテスト トップ画面(root_path)のテスト 表示の確認 root_pathが"/"であるか
+rspec ./spec/system/books_spec.rb:23 # 投稿のテスト 一覧画面のテスト 一覧の表示とリンクの確認 bookの一覧表示(tableタグ)と投稿フォームが同一画面に表示されているか
+rspec ./spec/system/books_spec.rb:28 # 投稿のテスト 一覧画面のテスト 一覧の表示とリンクの確認 bookのタイトルと感想を表示し、詳細・編集・削除のリンクが表示されているか
+rspec ./spec/system/books_spec.rb:51 # 投稿のテスト 一覧画面のテスト 一覧の表示とリンクの確認 Create Bookボタンが表示される
+rspec ./spec/system/books_spec.rb:56 # 投稿のテスト 一覧画面のテスト 投稿処理に関するテスト 投稿に成功しサクセスメッセージが表示されるか
+rspec ./spec/system/books_spec.rb:62 # 投稿のテスト 一覧画面のテスト 投稿処理に関するテスト 投稿に失敗する
+rspec ./spec/system/books_spec.rb:67 # 投稿のテスト 一覧画面のテスト 投稿処理に関するテスト 投稿後のリダイレクト先は正しいか
+rspec ./spec/system/books_spec.rb:75 # 投稿のテスト 一覧画面のテスト book削除のテスト application.html.erbにjavascript_pack_tagを含んでいるか
+rspec ./spec/system/books_spec.rb:86 # 投稿のテスト 一覧画面のテスト book削除のテスト bookの削除
+rspec ./spec/system/books_spec.rb:100 # 投稿のテスト 詳細画面のテスト 表示の確認 本のタイトルと感想が画面に表示されていること
+rspec ./spec/system/books_spec.rb:104 # 投稿のテスト 詳細画面のテスト 表示の確認 Editリンクが表示される
+rspec ./spec/system/books_spec.rb:108 # 投稿のテスト 詳細画面のテスト 表示の確認 Backリンクが表示される
+rspec ./spec/system/books_spec.rb:114 # 投稿のテスト 詳細画面のテスト リンクの遷移先の確認 Editの遷移先は編集画面か
+rspec ./spec/system/books_spec.rb:119 # 投稿のテスト 詳細画面のテスト リンクの遷移先の確認 Backの遷移先は一覧画面か
+rspec ./spec/system/books_spec.rb:131 # 投稿のテスト 編集画面のテスト 表示の確認 編集前のタイトルと感想がフォームに表示(セット)されている
+rspec ./spec/system/books_spec.rb:135 # 投稿のテスト 編集画面のテスト 表示の確認 Update Bookボタンが表示される
+rspec ./spec/system/books_spec.rb:138 # 投稿のテスト 編集画面のテスト 表示の確認 Showリンクが表示される
+rspec ./spec/system/books_spec.rb:142 # 投稿のテスト 編集画面のテスト 表示の確認 Backリンクが表示される
+rspec ./spec/system/books_spec.rb:148 # 投稿のテスト 編集画面のテスト リンクの遷移先の確認 Showの遷移先は詳細画面か
+rspec ./spec/system/books_spec.rb:153 # 投稿のテスト 編集画面のテスト リンクの遷移先の確認 Backの遷移先は一覧画面か
+rspec ./spec/system/books_spec.rb:160 # 投稿のテスト 編集画面のテスト 更新処理に関するテスト 更新に成功しサクセスメッセージが表示されるか
+rspec ./spec/system/books_spec.rb:166 # 投稿のテスト 編集画面のテスト 更新処理に関するテスト 更新に失敗しエラーメッセージが表示されるか
+rspec ./spec/system/books_spec.rb:172 # 投稿のテスト 編集画面のテスト 更新処理に関するテスト 更新後のリダイレクト先は正しいか
+
